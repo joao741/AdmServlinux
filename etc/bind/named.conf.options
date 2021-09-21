@@ -1,0 +1,28 @@
+acl "interna" {
+	
+	127.0.0.0/8;
+	:: 1/128;
+	192.168.15.0/24;
+
+}; 
+options { 
+	diretório “/ var / cache / bind”; 
+
+	forwarders {
+                   
+		8.8.8.8;
+		8.8.4.4; 
+
+	};
+
+	dnssec-validation auto;
+	auth-nxdomain no;
+	// onde esta 192.168.15.35 é o ip do pc
+	ouvir em {127.0.0.1; 192.168.15.35; };
+	ouvir na v6 {:: 1; };
+	allow-query {"interna"; };
+	permitir-recursão {"interna"; };
+	permitir-transferência {nenhum; };
+	versão nenhuma;
+
+};
